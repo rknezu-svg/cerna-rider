@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>#ČERNÁ – Technical rider</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#e9e9e6;--fg:#000;--panel:#fff;--mute:#55554f;--tape:#f5d400;--tapefg:#000;--hl:#f5d400;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101010;--fg:#efefeb;--panel:#1b1b1a;--mute:#a4a49c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101010;--fg:#efefeb;--panel:#1b1b1a;--mute:#a4a49c;color-scheme:dark}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 "Hanken Grotesk",system-ui,sans-serif}
+.disp{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;letter-spacing:.01em;line-height:.95}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:3px solid var(--fg);display:flex;align-items:center;gap:24px;padding:10px clamp(16px,4vw,48px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header .mark{height:36px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
+nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+nav a,button.pr{font:700 15px "Hanken Grotesk",sans-serif;color:var(--fg);text-decoration:none;padding:8px 12px;border:2px solid transparent;background:none;cursor:pointer}
+nav a:hover,button.pr{border-color:var(--fg)}
+button.pr:hover{background:var(--fg);color:var(--bg)}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+main{padding:0 clamp(16px,4vw,48px)}
+.hero{padding:clamp(32px,7vw,88px) 0 0;max-width:1200px;margin:auto}
+.hero svg.big{display:block;width:min(100%,760px);height:auto;aspect-ratio:var(--ar);color:var(--fg)}
+.hero p.lede{font-size:clamp(20px,2.6vw,28px);max-width:30ch;margin:24px 0 0;font-weight:600;line-height:1.3}
+.slab{margin:clamp(32px,5vw,64px) 0 0;background:var(--fg);color:var(--bg);clip-path:polygon(0 0,100% 0,calc(100% - 34px) 100%,0 100%);display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px 28px;padding:28px clamp(20px,4vw,48px) 28px}
+.slab b{display:block;font:900 clamp(30px,4vw,46px)/1 "Big Shoulders Display","Arial Narrow",Impact,sans-serif}
+.slab span{font-size:15px;opacity:.85}
+section{max-width:1200px;margin:clamp(56px,9vw,112px) auto 0}
+h2{font-size:clamp(40px,6vw,72px);margin:0 0 8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:62ch}
+.panel{background:var(--panel);border:3px solid var(--fg);padding:clamp(8px,2vw,20px)}
+.stage{width:100%;height:auto;display:block;font-family:"Hanken Grotesk",sans-serif}
+.stage .o{fill:none;stroke:var(--fg);stroke-width:2.5}
+.stage .f{fill:var(--panel);stroke:var(--fg);stroke-width:2.5}
+.stage text{fill:var(--fg);font-size:14px;text-anchor:middle;font-weight:600}
+.stage .b{font-size:17px;font-weight:700}
+.stage .s{font-size:12px;font-weight:400}
+.stage .mute{fill:var(--mute);font-weight:400}
+.stage [data-in]{cursor:pointer;outline:none}
+.stage .hl .f,.stage .hl.f{fill:var(--hl);}
+.stage .hl text{fill:#000}
+.stage .tape{fill:var(--tape);stroke:#000;stroke-width:2}
+.stage .tapet{fill:#000;font-size:12px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0 0;font-size:15px;color:var(--mute)}
+.tag{display:inline-block;background:var(--tape);color:#000;font-weight:700;font-size:13px;padding:1px 9px;transform:skewX(-12deg);margin-left:8px;white-space:nowrap}
+.wrap{overflow-x:auto;border:3px solid var(--fg);background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:16px}
+th,td{text-align:left;padding:9px 14px;vertical-align:top}
+thead th{background:var(--fg);color:var(--bg);font-weight:700;position:sticky;top:0}
+tbody th.g{font:800 22px/1 "Big Shoulders Display","Arial Narrow",Impact,sans-serif;padding:16px 14px 8px;border-top:3px solid var(--fg);background:var(--bg)}
+td.n{font-weight:700;width:64px;font-variant-numeric:tabular-nums}
+tbody tr.r{border-top:1px solid var(--mute)}
+tbody tr.r.hl{background:var(--hl);color:#000}
+.mute{color:var(--mute)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px}
+.card{background:var(--panel);border:3px solid var(--fg);padding:22px 24px}
+.card h3{font-size:32px;margin:0 0 12px}
+.card ul{margin:0;padding-left:1.1em}
+.card li{margin:0 0 7px}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px}
+.contacts a{display:block;text-decoration:none;color:var(--fg);background:var(--panel);border:3px solid var(--fg);padding:20px 22px}
+.contacts a:hover{background:var(--fg);color:var(--bg)}
+.contacts small{display:block;font-size:15px;opacity:.75}
+.contacts b{display:block;font:900 30px/1.1 "Big Shoulders Display","Arial Narrow",Impact,sans-serif;margin:4px 0 6px}
+.contacts span{font-weight:700;font-size:19px}
+footer{margin:clamp(56px,9vw,112px) 0 0;border-top:3px solid var(--fg);padding:24px clamp(16px,4vw,48px) 40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:var(--mute);font-size:15px}
+footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
+@media (max-width:640px){nav a:not(.keep){display:none}}
+@media print{header,nav,button.pr{display:none}body{background:#fff;color:#000;font-size:14px}body::before{display:none}main{padding:0}.hero{padding-top:0}section{margin-top:0;padding-top:8mm;break-before:page}#tech{break-before:auto;margin-top:10mm}h2{break-after:avoid;font-size:44px}.sub{margin-bottom:14px}.panel,.wrap,.card,tr{break-inside:avoid}table{font-size:13px;min-width:0}th,td{padding:4px 12px}tbody th.g{padding:10px 12px 4px;font-size:18px}.wrap{overflow:visible}thead th{position:static}.slab{margin-top:24px}footer{margin-top:16mm}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="406 250 6544 2314"><path fill="currentColor" fill-rule="nonzero" d="M 4309 1352 C 4343 1352 4377 1352 4411 1352 C 4422 1352 4433 1351 4443 1348 C 4468 1339 4487 1323 4492 1295 C 4498 1266 4485 1239 4457 1224 C 4444 1216 4431 1214 4417 1214 C 4346 1213 4275 1213 4205 1214 C 4201 1214 4198 1214 4195 1214 C 4191 1214 4189 1216 4188 1220 C 4188 1223 4188 1225 4188 1228 C 4188 1265 4188 1301 4188 1338 C 4188 1340 4188 1342 4188 1344 C 4188 1349 4190 1351 4195 1352 C 4200 1352 4205 1352 4209 1352 C 4243 1352 4276 1352 4309 1352 M 4189 1561 C 4187 1570 4188 1577 4188 1584 C 4188 1681 4188 1778 4188 1876 C 4188 1880 4188 1885 4188 1890 C 4188 1897 4187 1902 4181 1907 C 4177 1911 4174 1917 4171 1922 C 4105 2027 4038 2131 3972 2236 C 3969 2241 3965 2246 3962 2251 C 3961 2252 3959 2252 3958 2252 C 3958 2252 3957 2250 3956 2249 C 3956 2247 3956 2245 3956 2243 C 3956 2237 3956 2231 3956 2225 C 3956 1897 3956 1569 3956 1241 C 3956 1234 3956 1228 3956 1221 C 3956 1216 3953 1214 3948 1214 C 3934 1214 3920 1214 3906 1213 C 3900 1213 3894 1213 3888 1213 C 3885 1212 3884 1210 3885 1207 C 3892 1195 3899 1184 3906 1173 C 3938 1122 3969 1071 4001 1020 C 4003 1018 4004 1015 4005 1013 C 4008 1010 4011 1008 4015 1008 C 4019 1008 4023 1008 4027 1008 C 4160 1008 4293 1007 4425 1008 C 4520 1009 4599 1045 4661 1116 C 4710 1172 4729 1238 4721 1311 C 4716 1367 4693 1415 4655 1456 C 4618 1496 4573 1526 4520 1542 C 4517 1543 4513 1544 4509 1546 C 4506 1547 4506 1550 4508 1552 C 4510 1554 4512 1557 4515 1559 C 4604 1640 4694 1720 4784 1801 C 4788 1805 4792 1811 4796 1810 C 4803 1807 4800 1799 4800 1794 C 4800 1472 4800 1150 4800 828 C 4800 820 4799 812 4801 803 C 4808 807 4812 813 4816 817 C 4861 870 4905 922 4950 974 C 5099 1148 5247 1321 5396 1495 C 5399 1499 5402 1502 5405 1505 C 5406 1506 5408 1506 5409 1506 C 5410 1505 5411 1504 5411 1503 C 5411 1501 5411 1499 5411 1497 C 5411 1491 5411 1486 5411 1481 C 5411 1337 5411 1193 5411 1049 C 5411 1043 5411 1037 5411 1031 C 5412 1020 5412 1020 5423 1019 C 5428 1019 5432 1019 5437 1019 C 5496 1019 5556 1019 5615 1019 C 5621 1019 5627 1019 5633 1020 C 5637 1020 5639 1022 5640 1026 C 5640 1032 5640 1039 5640 1046 C 5640 1288 5640 1531 5640 1774 L 5640 1795 C 5648 1797 5648 1791 5651 1787 C 5679 1742 5708 1697 5736 1652 C 5828 1508 5919 1364 6010 1220 C 6088 1098 6164 975 6241 852 C 6250 836 6262 821 6270 805 C 6283 778 6301 753 6316 727 C 6317 725 6319 722 6321 719 C 6324 715 6327 712 6333 712 C 6336 713 6339 712 6343 712 C 6426 712 6509 712 6593 712 C 6597 712 6601 712 6604 713 C 6608 713 6609 716 6608 718 C 6606 723 6603 727 6601 731 C 6544 821 6487 911 6431 1002 C 6420 1018 6410 1034 6400 1051 C 6397 1056 6396 1060 6400 1065 C 6403 1070 6406 1075 6409 1080 C 6578 1347 6748 1614 6917 1881 C 6921 1887 6925 1894 6929 1900 C 6926 1905 6922 1904 6919 1904 C 6915 1905 6910 1904 6905 1904 C 6641 1904 6376 1904 6112 1904 C 6081 1904 6085 1908 6084 1878 C 6084 1819 6084 1760 6084 1700 C 6084 1694 6085 1688 6085 1682 C 6085 1678 6087 1676 6091 1676 C 6097 1676 6103 1676 6109 1676 C 6229 1676 6349 1676 6469 1676 C 6475 1676 6481 1676 6487 1675 C 6491 1675 6491 1672 6490 1670 C 6487 1665 6485 1660 6482 1656 C 6410 1541 6338 1427 6266 1312 C 6263 1307 6260 1300 6254 1296 C 6247 1301 6244 1309 6240 1316 C 6123 1502 6005 1689 5888 1876 C 5882 1885 5877 1896 5869 1903 C 5858 1904 5847 1904 5837 1904 C 5779 1904 5721 1904 5663 1904 C 5657 1904 5652 1904 5647 1905 C 5643 1905 5641 1907 5640 1911 C 5640 1917 5640 1923 5640 1929 C 5640 1997 5640 2065 5640 2133 C 5640 2139 5640 2145 5639 2151 C 5639 2152 5638 2153 5637 2153 C 5636 2154 5634 2153 5634 2153 C 5630 2148 5626 2144 5622 2139 C 5590 2102 5558 2064 5525 2027 C 5365 1839 5204 1651 5043 1463 C 5040 1459 5037 1451 5030 1453 C 5026 1455 5028 1463 5028 1468 C 5028 1604 5028 1740 5028 1876 C 5028 1882 5028 1888 5028 1894 C 5028 1899 5025 1901 5021 1901 C 5015 1901 5010 1901 5005 1901 C 4867 1901 4729 1901 4591 1901 C 4587 1901 4583 1901 4579 1901 C 4573 1902 4568 1900 4564 1896 C 4558 1890 4552 1885 4546 1880 C 4433 1778 4320 1676 4207 1575 C 4202 1570 4197 1565 4189 1561 "/><path fill="currentColor" fill-rule="nonzero" d="M 1110 1691 L 1110 1691 C 1116 1691 1122 1691 1128 1691 C 1158 1691 1188 1691 1218 1691 C 1228 1691 1234 1689 1238 1680 C 1239 1678 1241 1676 1242 1674 C 1277 1619 1312 1565 1346 1510 C 1406 1417 1465 1324 1524 1230 C 1527 1226 1529 1222 1531 1218 C 1533 1215 1531 1212 1527 1212 C 1523 1212 1519 1212 1515 1212 C 1448 1212 1381 1211 1313 1211 C 1291 1211 1295 1209 1284 1228 C 1198 1363 1112 1498 1026 1633 C 1016 1649 1006 1666 996 1682 C 992 1688 994 1691 1000 1691 C 1037 1691 1074 1691 1110 1691 M 1882 669 C 1887 671 1889 676 1891 680 C 1931 742 1970 803 2009 865 C 2011 868 2013 871 2014 874 C 2017 878 2016 881 2014 885 C 2010 891 2006 897 2002 904 C 1985 931 1967 959 1950 986 C 1947 991 1944 996 1940 1002 C 1948 1006 1955 1005 1961 1005 C 2011 1005 2060 1005 2109 1005 C 2115 1005 2123 1002 2126 1007 C 2131 1013 2123 1019 2119 1024 C 2084 1080 2048 1137 2012 1193 C 2010 1196 2008 1199 2006 1203 C 2003 1210 1997 1212 1990 1212 C 1966 1211 1942 1212 1918 1212 C 1888 1212 1858 1212 1828 1212 C 1803 1212 1809 1209 1796 1229 C 1773 1264 1751 1300 1729 1335 C 1665 1435 1602 1534 1539 1634 C 1530 1648 1521 1662 1513 1676 C 1510 1680 1505 1684 1507 1688 C 1510 1694 1516 1691 1520 1691 C 1571 1691 1621 1691 1672 1691 C 1679 1691 1685 1691 1691 1691 C 1693 1696 1691 1699 1690 1702 C 1651 1763 1612 1824 1573 1886 C 1568 1894 1562 1898 1552 1898 C 1500 1897 1448 1897 1396 1898 C 1391 1898 1385 1898 1380 1898 C 1374 1897 1370 1900 1367 1905 C 1364 1910 1360 1915 1357 1920 C 1264 2067 1171 2214 1078 2361 C 1042 2417 1006 2473 971 2529 C 967 2534 965 2540 960 2543 C 955 2544 954 2540 953 2537 C 912 2473 871 2408 829 2343 C 825 2336 825 2331 829 2324 C 867 2265 904 2207 941 2148 C 990 2072 1038 1995 1087 1919 C 1090 1914 1093 1909 1096 1903 C 1097 1901 1097 1898 1093 1898 C 1089 1897 1085 1897 1081 1897 C 1012 1897 944 1897 875 1897 C 873 1897 871 1897 869 1897 C 861 1896 857 1900 853 1906 C 849 1913 844 1920 840 1926 C 799 1992 757 2057 716 2122 C 712 2128 709 2135 703 2140 C 698 2138 697 2134 695 2131 C 654 2067 614 2004 574 1940 C 568 1932 568 1926 574 1919 C 577 1915 580 1910 582 1905 C 585 1901 583 1897 578 1897 C 578 1897 577 1897 576 1897 C 558 1901 549 1891 540 1877 C 506 1821 471 1766 436 1711 C 432 1705 425 1699 428 1694 C 432 1687 441 1691 448 1691 C 531 1691 615 1691 698 1691 C 719 1691 716 1694 728 1675 C 757 1629 786 1584 815 1538 C 879 1437 944 1336 1008 1235 C 1012 1229 1015 1223 1019 1218 C 1020 1215 1019 1212 1016 1212 C 1011 1211 1005 1211 1000 1211 C 994 1211 990 1210 987 1204 C 985 1201 983 1199 981 1196 C 944 1138 908 1080 871 1022 C 868 1018 866 1014 864 1010 C 862 1007 864 1005 867 1005 C 873 1004 878 1004 883 1004 C 967 1004 1050 1004 1133 1004 C 1158 1004 1152 1007 1165 987 C 1281 804 1398 621 1515 437 C 1548 385 1581 332 1614 280 C 1617 274 1620 268 1626 264 C 1631 267 1632 271 1635 275 C 1674 338 1714 400 1754 462 C 1755 465 1756 467 1758 469 C 1760 473 1760 477 1758 480 C 1755 484 1753 488 1751 492 C 1647 655 1543 819 1440 982 C 1436 988 1432 994 1429 1000 C 1432 1007 1437 1004 1441 1004 C 1492 1004 1543 1004 1593 1004 C 1612 1004 1631 1003 1649 1004 C 1662 1005 1670 1001 1677 990 C 1700 952 1724 915 1748 877 C 1789 813 1830 749 1871 685 C 1874 679 1877 673 1882 669 "/><path fill="currentColor" fill-rule="nonzero" d="M 2731 1352 C 2725 1349 2723 1343 2720 1338 C 2696 1302 2673 1266 2650 1231 C 2648 1227 2645 1223 2643 1219 C 2640 1215 2637 1214 2632 1214 C 2629 1214 2626 1213 2622 1213 C 2594 1213 2566 1213 2538 1214 C 2461 1215 2395 1243 2340 1299 C 2256 1385 2257 1520 2335 1605 C 2381 1655 2437 1685 2505 1693 C 2524 1695 2543 1696 2563 1695 C 2569 1695 2575 1695 2581 1695 C 2701 1695 2822 1695 2943 1696 C 2947 1696 2952 1696 2957 1696 C 2960 1696 2961 1699 2960 1702 C 2958 1705 2957 1707 2955 1710 C 2917 1769 2880 1828 2843 1888 C 2836 1898 2829 1902 2817 1902 C 2749 1901 2681 1902 2613 1901 C 2580 1901 2548 1902 2515 1900 C 2357 1893 2229 1827 2131 1704 C 2072 1628 2046 1540 2048 1444 C 2050 1338 2089 1246 2162 1169 C 2232 1095 2315 1045 2414 1022 C 2435 1017 2456 1013 2477 1011 C 2486 1011 2494 1009 2503 1008 C 2504 1001 2500 997 2497 993 C 2467 946 2437 900 2407 853 C 2404 849 2401 845 2398 840 C 2394 833 2396 830 2403 830 C 2408 829 2412 829 2417 829 C 2484 829 2550 829 2617 830 C 2640 830 2637 827 2649 846 C 2673 883 2696 919 2720 956 C 2723 961 2727 966 2731 972 C 2737 970 2739 965 2742 961 C 2766 924 2790 887 2813 850 C 2816 846 2818 843 2820 840 C 2824 832 2829 829 2838 829 C 2840 830 2843 829 2846 829 C 2913 829 2980 829 3048 830 C 3053 830 3061 827 3064 832 C 3068 837 3061 842 3058 847 C 2953 1011 2847 1174 2742 1338 C 2739 1343 2737 1349 2731 1352 "/><path fill="currentColor" fill-rule="nonzero" d="M 3041 2254 C 3039 2244 3039 2236 3039 2228 C 3039 1902 3039 1575 3039 1248 C 3039 1240 3039 1231 3039 1222 C 3039 1216 3037 1214 3031 1214 C 3017 1213 3004 1214 2991 1213 C 2986 1213 2981 1214 2977 1213 C 2969 1213 2967 1210 2971 1204 C 2977 1193 2984 1182 2991 1171 C 3022 1121 3054 1071 3085 1020 C 3086 1018 3088 1016 3089 1014 C 3091 1010 3094 1008 3099 1008 C 3103 1008 3108 1008 3113 1008 C 3336 1008 3559 1008 3783 1008 C 3806 1008 3804 1006 3804 1029 C 3805 1084 3804 1138 3804 1193 C 3804 1198 3804 1202 3804 1207 C 3804 1211 3801 1213 3797 1213 C 3791 1213 3784 1213 3777 1213 C 3617 1213 3456 1213 3296 1214 C 3289 1214 3282 1214 3276 1214 C 3273 1214 3271 1216 3270 1219 C 3270 1226 3270 1233 3270 1239 C 3270 1354 3270 1469 3270 1583 C 3270 1611 3269 1638 3270 1665 C 3272 1702 3266 1696 3301 1696 C 3385 1696 3468 1696 3551 1696 C 3556 1696 3562 1696 3567 1696 C 3574 1695 3576 1694 3576 1688 C 3576 1676 3576 1664 3576 1652 C 3576 1625 3573 1627 3601 1627 C 3663 1627 3725 1627 3787 1627 C 3805 1627 3804 1627 3804 1645 C 3804 1724 3804 1803 3804 1883 C 3804 1887 3804 1891 3804 1895 C 3804 1898 3802 1901 3798 1901 C 3791 1901 3785 1901 3778 1901 C 3619 1901 3461 1901 3302 1901 C 3298 1901 3294 1902 3290 1901 C 3274 1899 3264 1906 3255 1920 C 3189 2025 3122 2130 3056 2235 C 3052 2241 3049 2247 3041 2254 "/><path fill="currentColor" fill-rule="nonzero" d="M 3550 1352 C 3609 1352 3667 1352 3726 1352 C 3732 1352 3738 1352 3744 1353 C 3748 1353 3748 1356 3747 1358 C 3745 1363 3742 1367 3740 1370 C 3704 1427 3668 1484 3632 1541 C 3630 1544 3628 1546 3626 1549 C 3623 1555 3618 1557 3612 1557 C 3608 1557 3605 1557 3602 1557 C 3524 1557 3446 1557 3368 1557 C 3364 1557 3360 1557 3356 1557 C 3349 1557 3348 1555 3347 1549 C 3347 1546 3347 1542 3347 1539 C 3347 1483 3347 1426 3347 1369 C 3347 1351 3347 1352 3364 1352 C 3426 1352 3488 1352 3550 1352 Z M 3550 1352 "/></symbol></svg>
+
+<header>
+<svg class="mark" style="--ar:2.8280" role="img" aria-label="#ČERNÁ"><use href="#logo"/></svg>
+<nav aria-label="Navigace">
+<a href="#stage" class="keep">Stage plan</a><a href="#input" class="keep">Input list</a><a href="#tech">Technika</a><a href="#kontakt">Kontakt</a>
+<button class="pr" onclick="window.print()">Tisk / PDF</button>
+</nav>
+</header>
+
+<main>
+<div class="hero">
+<h1 style="margin:0"><svg class="big" style="--ar:2.8280" role="img" aria-label="#ČERNÁ"><use href="#logo"/></svg></h1>
+<p class="lede disp" style="font-weight:800">Technical rider: pódium, vstupy a požadavky na pořadatele</p>
+<div class="slab" role="list">
+<div role="listitem"><b>Midas M32R</b><span>vlastní digitální FOH pult</span></div>
+<div role="listitem"><b>10 × 6 m</b><span>backdrop (6 × 4 m)</span></div>
+<div role="listitem"><b>3 × 2 m</b><span>drum raiser</span></div>
+<div role="listitem"><b>Monitor + IEM</b><span>bez odposlechových boxů</span></div>
+</div>
+</div>
+
+<section id="stage">
+<h2 class="disp">Stage plan</h2>
+<p class="sub">Pohled shora, publikum dole. Najetím nebo kliknutím na nástroj zvýrazníte jeho vstupy v input listu.</p>
+<div class="panel">
+<svg class="stage" viewBox="0 0 720 650" role="img" aria-label="Stage plan kapely #ČERNÁ: bicí na raiseru vzadu, vpředu kytara, zpěv a klavír, basa">
+<rect class="o" x="70" y="8" width="580" height="50"/>
+<text class="b" x="360" y="40" style="font-size:22px">BACKDROP 10×6 m (6×4)</text>
+
+<rect class="o" x="6" y="90" width="68" height="38"/><text x="40" y="114">10× 220 V</text>
+<rect class="o" x="6" y="136" width="68" height="56"/><text x="40" y="160" class="s">4× 220 V</text><text x="40" y="177" class="s">Světla</text>
+<rect class="o" x="8" y="210" width="26" height="160"/><rect class="o" x="42" y="210" width="26" height="160"/>
+<rect class="o" x="652" y="210" width="26" height="160"/><rect class="o" x="686" y="210" width="26" height="160"/>
+<g class="s mute" style="font-size:12px"><text transform="translate(26 290) rotate(-90)">LED BAR 2 m</text><text transform="translate(60 290) rotate(-90)">LED BAR 2 m</text><text transform="translate(670 290) rotate(-90)">LED BAR 2 m</text><text transform="translate(704 290) rotate(-90)">LED BAR 2 m</text></g>
+
+<rect class="o" x="90" y="76" width="540" height="340"/>
+<text x="618" y="404" class="s" style="text-anchor:end">DRUM RAISER 3×2 m</text>
+<rect class="f" x="104" y="90" width="120" height="82"/><text class="b" x="164" y="138">RACK</text>
+<g data-in="14" tabindex="0"><rect class="f" x="290" y="90" width="150" height="50"/><text class="b" x="365" y="112" style="font-size:15px">BACK VOCAL</text><text class="s" x="365" y="130">Own BETA 56A</text></g>
+
+<g data-in="1" tabindex="0"><rect class="f" x="318" y="338" width="132" height="60"/><text class="s" x="384" y="390">Bass drum</text></g>
+<g data-in="6,7" tabindex="0"><circle class="f" cx="540" cy="160" r="46"/><text x="540" y="164" class="s">Floor Tom 2</text><circle class="f" cx="250" cy="226" r="50"/><text x="256" y="230" class="s">Floor Tom 1</text></g>
+<g data-in="2" tabindex="0"><circle class="f" cx="420" cy="232" r="30"/><text x="420" y="237">Snare</text></g>
+<g data-in="3" tabindex="0"><circle class="f" cx="500" cy="246" r="32"/><text x="500" y="251">Hi-hat</text></g>
+<g data-in="4,5" tabindex="0"><circle class="f" cx="340" cy="322" r="28"/><text x="340" y="327">Tom 2</text><circle class="f" cx="430" cy="322" r="28"/><text x="430" y="327">Tom 1</text></g>
+<g><circle class="f" cx="190" cy="246" r="24"/><text x="190" y="250" class="s">Crash</text>
+<circle class="f" cx="535" cy="292" r="22"/><text x="535" y="296" class="s">Crash</text>
+<circle class="f" cx="310" cy="360" r="22"/><text x="310" y="364" class="s">Crash</text>
+<circle class="f" cx="470" cy="362" r="22"/><text x="470" y="366" class="s">Crash</text>
+<circle class="f" cx="262" cy="318" r="40"/><text x="262" y="322" style="font-size:14px">Ride</text></g>
+
+<g data-in="11" tabindex="0"><rect class="f" x="24" y="446" width="196" height="84"/><text class="b" x="122" y="480">LEAD GUITAR</text><text x="122" y="504" class="s">3× 220 V</text></g>
+<g data-in="12,13" tabindex="0"><rect class="f" x="248" y="446" width="224" height="84"/><text class="b" x="360" y="472">LEAD VOCAL</text><text class="b" x="360" y="494">PIANO</text><text class="s" x="360" y="515">Own Senn E945</text>
+<rect class="tape" x="296" y="522" width="128" height="22" transform="skewX(0)"/><text class="tapet" x="360" y="538">jen vlastní Tour</text></g>
+<g data-in="10" tabindex="0"><rect class="f" x="500" y="446" width="196" height="84"/><text class="b" x="598" y="494">BASS</text></g>
+<rect class="o" x="70" y="566" width="230" height="46"/><text x="185" y="595">OWN RAISER</text>
+<rect class="o" x="420" y="566" width="230" height="46"/><text x="535" y="595">OWN RAISER</text>
+<text class="s mute" x="360" y="640">▼ publikum</text>
+</svg>
+</div>
+<div class="legend"><span>Vlastní mikrofony: Beta 56A (back vocal), Sennheiser e945 (lead vocal)</span><span>Hi-hat a overheady zajistí pořadatel</span></div>
+</section>
+
+<section id="input">
+<h2 class="disp">Input list</h2>
+<p class="sub">22 kanálů. Vlastní mikrofony a digitální pult Midas M32R, zpracování (kompresor, gate) máme na FOH.</p>
+<div class="wrap" role="region" aria-label="Input list" tabindex="0">
+<table>
+<thead><tr><th scope="col">Kanál</th><th scope="col">Zdroj</th><th scope="col">Mikrofon / vstup</th><th scope="col">Zpracování</th></tr></thead>
+<tbody>
+<tr><th class="g" colspan="4" scope="colgroup">Bicí</th></tr>
+<tr class="r" id="r1"><td class="n">1</td><td>Kick drum</td><td>Vlastní mikrofon</td><td></td></tr>
+<tr class="r" id="r2"><td class="n">2</td><td>Snare</td><td>Vlastní mikrofon</td><td>Compressor, gate</td></tr>
+<tr class="r" id="r3"><td class="n">3</td><td>Hi-hat</td><td>Zajistí pořadatel</td><td></td></tr>
+<tr class="r" id="r4"><td class="n">4</td><td>Tom 10"</td><td>Vlastní mikrofon</td><td>Gate</td></tr>
+<tr class="r" id="r5"><td class="n">5</td><td>Tom 12"</td><td>Vlastní mikrofon</td><td>Gate</td></tr>
+<tr class="r" id="r6"><td class="n">6</td><td>Floor tom 16"</td><td>Vlastní mikrofon</td><td>Gate</td></tr>
+<tr class="r" id="r7"><td class="n">7</td><td>Floor tom 18"</td><td>Vlastní mikrofon</td><td>Gate</td></tr>
+<tr class="r" id="r8"><td class="n">8</td><td>Overhead L</td><td>Zajistí pořadatel</td><td></td></tr>
+<tr class="r" id="r9"><td class="n">9</td><td>Overhead R</td><td>Zajistí pořadatel</td><td></td></tr>
+<tr><th class="g" colspan="4" scope="colgroup">Nástroje</th></tr>
+<tr class="r" id="r10"><td class="n">10</td><td>Bass</td><td>XLR</td><td>Compressor</td></tr>
+<tr class="r" id="r11"><td class="n">11</td><td>Lead guitar</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r12"><td class="n">12</td><td>Piano<span class="tag">jen vlastní Tour</span></td><td>XLR</td><td></td></tr>
+<tr><th class="g" colspan="4" scope="colgroup">Zpěv</th></tr>
+<tr class="r" id="r13"><td class="n">13</td><td>Lead vocal</td><td>Vlastní Sennheiser Wireless G4, XLR</td><td>Compressor</td></tr>
+<tr class="r" id="r14"><td class="n">14</td><td>Back vocal</td><td>Vlastní Shure Beta 56A</td><td>Compressor</td></tr>
+<tr class="r" id="r15"><td class="n">15</td><td>Talk back</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r16"><td class="n">16</td><td class="mute">Spare</td><td></td><td></td></tr>
+<tr><th class="g" colspan="4" scope="colgroup">Samplery</th></tr>
+<tr class="r" id="r17"><td class="n">17</td><td>Sampler L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r18"><td class="n">18</td><td>Sampler R</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r19"><td class="n">19</td><td>Sampler GTR L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r20"><td class="n">20</td><td>Sampler GTR R</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r21"><td class="n">21</td><td>Sampler VOC L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r22"><td class="n">22</td><td>Sampler VOC R</td><td>XLR</td><td></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="tech">
+<h2 class="disp">Technika</h2>
+<p class="sub">Co si vezmeme a co potřebujeme od pořadatele.</p>
+<div class="cols">
+<div class="card"><h3 class="disp">Přivezeme</h3>
+<ul>
+<li>Vlastní mikrofony, kromě hi-hatu a overheadů</li>
+<li>Vlastní monitorový pult a IEM, žádné odposlechové boxy nepotřebujeme</li>
+<li>Vlastní digitální FOH pult Midas M32R</li>
+<li>2 vlastní raisery</li>
+</ul></div>
+<div class="card"><h3 class="disp">Zajistí pořadatel</h3>
+<ul>
+<li>3 mikrofony: hi-hat a overhead L/R</li>
+<li>Mikrofonní stativy a 10× XLR kabel 5 m</li>
+<li>Zásuvky 220 V: 10× na pódiu, 4× pro světla, 3× u lead guitar</li>
+<li>Datový kabel pódium–FOH: 1× CAT6 s konektory Ethercon na obou koncích, max. 90 m (redundantní propojení)</li>
+</ul></div>
+<div class="card"><h3 class="disp">Výstup z FOH</h3>
+<ul>
+<li>2× XLR (L/R) nebo AES/EBU</li>
+</ul></div>
+</div>
+</section>
+
+<section id="kontakt">
+<h2 class="disp">Kontakt</h2>
+<p class="sub">Volejte nebo pište podle toho, co potřebujete vyřešit.</p>
+<div class="contacts">
+<a href="tel:+420607607561"><small>Kapela</small><b>Roman Kněžů</b><span>607 607 561</span></a>
+<a href="tel:+420777907508"><small>Zvuk</small><b>Jaromír Macháč</b><span>777 907 508</span></a>
+<a href="tel:+420773348880"><small>Tour manager</small><b>Richard Šafra</b><span>773 348 880</span></a>
+</div>
+</section>
+</main>
+
+<footer><svg style="--ar:2.8280" role="img" aria-label="#ČERNÁ"><use href="#logo"/></svg><span>Technical rider, stageplan 26/27</span></footer>
+
+<script>
+(function(){
+var els=[].slice.call(document.querySelectorAll('[data-in]'));
+function on(ids,v){ids.forEach(function(n){var r=document.getElementById('r'+n);if(r)r.classList.toggle('hl',v)});}
+els.forEach(function(el){
+var ids=el.getAttribute('data-in').split(',');
+['mouseenter','focus'].forEach(function(e){el.addEventListener(e,function(){el.classList.add('hl');on(ids,true)})});
+['mouseleave','blur'].forEach(function(e){el.addEventListener(e,function(){el.classList.remove('hl');on(ids,false)})});
+});
+[].slice.call(document.querySelectorAll('tr.r')).forEach(function(r){
+var n=r.id.slice(1);
+function set(v){els.forEach(function(el){if(el.getAttribute('data-in').split(',').indexOf(n)>-1)el.classList.toggle('hl',v)});r.classList.toggle('hl',v)}
+r.addEventListener('mouseenter',function(){set(true)});r.addEventListener('mouseleave',function(){set(false)});
+});
+})();
+</script>
+</body>
+</html>
