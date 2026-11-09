@@ -71,7 +71,7 @@ tbody tr.r.hl{background:var(--hl);color:#000}
 footer{margin:clamp(56px,9vw,112px) 0 0;border-top:3px solid var(--fg);padding:24px clamp(16px,4vw,48px) 40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:var(--mute);font-size:15px}
 footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
 @media (max-width:640px){nav a:not(.keep){display:none}}
-@media print{header,nav,button.pr{display:none}body{background:#fff;color:#000;font-size:14px}body::before{display:none}main{padding:0}.hero{padding-top:0}section{margin-top:0;padding-top:8mm;break-before:page}#tech{break-before:auto;margin-top:10mm}h2{break-after:avoid;font-size:44px}.sub{margin-bottom:14px}.panel,.wrap,.card,tr{break-inside:avoid}table{font-size:13px;min-width:0}th,td{padding:4px 12px}tbody th.g{padding:10px 12px 4px;font-size:18px}.wrap{overflow:visible}thead th{position:static}.slab{margin-top:24px}footer{margin-top:16mm}}
+@media print{header,nav,button.pr{display:none}body{background:#fff;color:#000;font-size:14px}body::before{display:none}main{padding:0}.hero{padding-top:0}section{margin-top:0;padding-top:8mm;break-before:page}#tech,#kontakt{break-before:auto;margin-top:10mm}h2{break-after:avoid;font-size:44px}.sub{margin-bottom:14px}.panel,.wrap,.card,tr{break-inside:avoid}table{font-size:13px;min-width:0}th,td{padding:4px 12px}tbody th.g{padding:10px 12px 4px;font-size:18px}.wrap{overflow:visible}thead th{position:static}.slab{margin-top:24px}footer{margin-top:8mm;padding:12px 0 0;break-before:avoid;break-inside:avoid}.cols{grid-template-columns:repeat(3,1fr);gap:12px}.card{padding:14px 16px}.card h3{font-size:26px}.contacts{grid-template-columns:repeat(4,1fr);gap:12px}.contacts a{padding:12px 14px}.contacts b{font-size:22px}.contacts span{font-size:16px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -81,7 +81,7 @@ footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
 <header>
 <svg class="mark" style="--ar:2.8280" role="img" aria-label="#ČERNÁ"><use href="#logo"/></svg>
 <nav aria-label="Navigace">
-<a href="#stage" class="keep">Stage plan</a><a href="#input" class="keep">Input list</a><a href="#tech">Technika</a><a href="#kontakt">Kontakt</a>
+<a href="#stage" class="keep">Stage plan</a><a href="#input" class="keep">Input list</a><a href="#tech">Technika</a><a href="#pozadavky">Požadavky</a><a href="#kontakt">Kontakt</a>
 <button class="pr" onclick="window.print()">Tisk / PDF</button>
 </nav>
 </header>
@@ -142,7 +142,7 @@ footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
 
 <section id="input">
 <h2 class="disp">Input list</h2>
-<p class="sub">22 kanálů. Vlastní mikrofony a digitální pult Midas M32R, zpracování (kompresor, gate) máme na FOH.</p>
+<p class="sub">24 kanálů. Vlastní mikrofony a digitální pult Midas M32R, zpracování (kompresor, gate) máme na FOH.</p>
 <div class="wrap" role="region" aria-label="Input list" tabindex="0">
 <table>
 <thead><tr><th scope="col">Kanál</th><th scope="col">Zdroj</th><th scope="col">Mikrofon / vstup</th><th scope="col">Zpracování</th></tr></thead>
@@ -166,13 +166,15 @@ footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
 <tr class="r" id="r14"><td class="n">14</td><td>Back vocal</td><td>Vlastní Shure Beta 56A</td><td>Compressor</td></tr>
 <tr class="r" id="r15"><td class="n">15</td><td>Talk back</td><td>XLR</td><td></td></tr>
 <tr class="r" id="r16"><td class="n">16</td><td class="mute">Spare</td><td></td><td></td></tr>
+<tr class="r" id="r17"><td class="n">17</td><td class="mute">Spare</td><td></td><td></td></tr>
+<tr class="r" id="r18"><td class="n">18</td><td class="mute">Spare</td><td></td><td></td></tr>
 <tr><th class="g" colspan="4" scope="colgroup">Samplery</th></tr>
-<tr class="r" id="r17"><td class="n">17</td><td>Sampler L</td><td>XLR</td><td></td></tr>
-<tr class="r" id="r18"><td class="n">18</td><td>Sampler R</td><td>XLR</td><td></td></tr>
-<tr class="r" id="r19"><td class="n">19</td><td>Sampler GTR L</td><td>XLR</td><td></td></tr>
-<tr class="r" id="r20"><td class="n">20</td><td>Sampler GTR R</td><td>XLR</td><td></td></tr>
-<tr class="r" id="r21"><td class="n">21</td><td>Sampler VOC L</td><td>XLR</td><td></td></tr>
-<tr class="r" id="r22"><td class="n">22</td><td>Sampler VOC R</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r19"><td class="n">19</td><td>Sampler L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r20"><td class="n">20</td><td>Sampler R</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r21"><td class="n">21</td><td>Sampler GTR L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r22"><td class="n">22</td><td>Sampler GTR R</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r23"><td class="n">23</td><td>Sampler VOC L</td><td>XLR</td><td></td></tr>
+<tr class="r" id="r24"><td class="n">24</td><td>Sampler VOC R</td><td>XLR</td><td></td></tr>
 </tbody>
 </table>
 </div>
@@ -199,6 +201,32 @@ footer svg{height:30px;width:auto;aspect-ratio:var(--ar);color:var(--fg)}
 <div class="card"><h3 class="disp">Výstup z FOH</h3>
 <ul>
 <li>2× XLR (L/R) nebo AES/EBU</li>
+</ul></div>
+<div class="card"><h3 class="disp">Místo na stage</h3>
+<ul>
+<li>Snažíme se o co nejčistší pódium, proto prosíme o odstranění monitorů, stojanů apod.</li>
+</ul></div>
+</div>
+</section>
+
+<section id="pozadavky">
+<h2 class="disp">Požadavky</h2>
+<p class="sub">Merch, jídlo a pití.</p>
+<div class="cols">
+<div class="card"><h3 class="disp">Merch</h3>
+<ul>
+<li>Místo pro stan 3 × 2 m s elektrickou přípojkou v okolí 10 m</li>
+</ul></div>
+<div class="card"><h3 class="disp">Jídlo</h3>
+<ul>
+<li>Jsme rockeři :-) Nepohrdneme ničím.</li>
+<li>Jezdí s námi ale i květinky z merche a jedna nejí maso, proto prosíme jedno vegetariánské jídlo.</li>
+</ul></div>
+<div class="card"><h3 class="disp">Pití</h3>
+<ul>
+<li>8× neperlivá voda (0,5 l)</li>
+<li>4× limo</li>
+<li>12× pivo :-)</li>
 </ul></div>
 </div>
 </section>
